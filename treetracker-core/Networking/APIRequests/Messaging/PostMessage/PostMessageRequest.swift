@@ -19,7 +19,6 @@ struct PostMessageRequest: APIRequest {
         let composedAt: Date
         let surveyResponse: [String]?
         let surveyId: String?
-        let videoLink: String?
 
         private enum CodingKeys: String, CodingKey {
             case messageId = "id"
@@ -31,7 +30,6 @@ struct PostMessageRequest: APIRequest {
             case composedAt = "composed_at"
             case surveyResponse = "survey_response"
             case surveyId = "survey_id"
-            case videoLink = "video_link"
         }
     }
 
@@ -51,8 +49,7 @@ struct PostMessageRequest: APIRequest {
             body: message.body,
             composedAt: message.composedAt,
             surveyResponse: message.surveyResponse,
-            surveyId: message.surveyId,
-            videoLink: message.videoLink
+            surveyId: message.surveyId
         )
     }
 

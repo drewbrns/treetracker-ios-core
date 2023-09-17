@@ -18,7 +18,6 @@ struct NewMessage {
     let composedAt: Date
     let surveyResponse: [String]?
     let surveyId: String?
-    let videoLink: String?
 
     init(
         parentMessageId: String,
@@ -28,8 +27,7 @@ struct NewMessage {
         body: String,
         composedAt: Date,
         surveyResponse: [String]? = nil,
-        surveyId: String? = nil,
-        videoLink: String? = nil
+        surveyId: String? = nil
     ) {
         self.messageId = UUID().uuidString
         self.parentMessageId = parentMessageId
@@ -40,6 +38,5 @@ struct NewMessage {
         self.composedAt = composedAt
         self.surveyResponse = surveyResponse
         self.surveyId = surveyId
-        self.videoLink = videoLink
     }
 }
