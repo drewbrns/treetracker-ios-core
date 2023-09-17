@@ -30,4 +30,30 @@ struct GetMessagesRequest: APIRequest {
             limit: limit
         )
     }
+
+    private let dateFormatter: ISO8601DateFormatter = {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [
+            .withInternetDateTime,
+            .withFractionalSeconds
+        ]
+        return dateFormatter
+    }()
+
+    var queryItemsParameterDateFormatter: ISO8601DateFormatter {
+        return dateFormatter
+    }
+
+    var responseDecoder: JSONDecoder {
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.dateDecodingStrategy = .custom({ decoder in
+            let container = try decoder.singleValueContainer()
+            let dateString = try container.decode(String.self)
+            if let date = dateFormatter.date(from: dateString) {
+                return date
+            }
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot decode date string \(dateString)")
+        })
+        return jsonDecoder
+    }
 }
