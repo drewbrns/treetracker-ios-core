@@ -37,7 +37,7 @@ class APIService: APIServiceProtocol {
                 }
 
                 do {
-                    let decodedObject = try JSONDecoder().decode(Request.ResponseType.self, from: data)
+                    let decodedObject = try request.responseDecoder.decode(Request.ResponseType.self, from: data)
                     completion(.success(decodedObject))
                 } catch {
                     completion(.failure(error))
