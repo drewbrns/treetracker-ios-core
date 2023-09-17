@@ -36,6 +36,12 @@ class APIService: APIServiceProtocol {
                     return
                 }
 
+                // If data is empty, but we expect it to be, complete successfully with EmptyCodable.
+                if data.isEmpty, let emptyCodable = EmptyCodable() as? Request.ResponseType {
+                    completion(.success(emptyCodable))
+                    return
+                }
+
                 do {
                     let decodedObject = try request.responseDecoder.decode(Request.ResponseType.self, from: data)
                     completion(.success(decodedObject))
