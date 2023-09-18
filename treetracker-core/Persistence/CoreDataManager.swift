@@ -8,12 +8,6 @@
 
 import CoreData
 
-public protocol CoreDataManaging {
-    var viewContext: NSManagedObjectContext { get }
-    func saveContext()
-    func perform<T: NSFetchRequestResult>(fetchRequest: NSFetchRequest<T>) -> [T]?
-}
-
 class CoreDataManager: CoreDataManaging {
 
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -51,14 +45,5 @@ class CoreDataManager: CoreDataManaging {
 
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
-    }
-
-    func perform<T: NSFetchRequestResult>(fetchRequest: NSFetchRequest<T>) -> [T]? {
-        do {
-            let result = try viewContext.fetch(fetchRequest)
-            return result
-        } catch {
-            return nil
-        }
     }
 }
