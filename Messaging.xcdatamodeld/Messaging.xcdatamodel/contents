@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22G91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MessageEntity" representedClassName="MessageEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="body" optional="YES" attributeType="String"/>
+        <attribute name="composedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="from" attributeType="String"/>
+        <attribute name="messageId" attributeType="String"/>
+        <attribute name="parentMessageId" optional="YES" attributeType="String"/>
+        <attribute name="planterIdentifier" attributeType="String"/>
+        <attribute name="read" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String"/>
+        <attribute name="to" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+        <attribute name="uploaded" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="survey" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SurveyEntity"/>
+    </entity>
+    <entity name="SurveyEntity" representedClassName="SurveyEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="surveyId" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
+    <entity name="SurveyQuestionEntity" representedClassName="SurveyQuestionEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="prompt" attributeType="String"/>
+    </entity>
+</model>
