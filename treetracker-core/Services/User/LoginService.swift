@@ -33,7 +33,7 @@ class LocalLoginService: LoginService {
 
         let managedObjectContext = coreDataManager.viewContext
         let fetchRequest: NSFetchRequest<PlanterDetail> = PlanterDetail.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier == %@", username.value)
+        fetchRequest.predicate = NSPredicate(format: "identifier =[cd] %@", username.value)
 
         do {
             let planters = try managedObjectContext.fetch(fetchRequest)
